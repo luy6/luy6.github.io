@@ -1372,7 +1372,7 @@
     {
       categoria: "Bowls Clássicos",
       itens: [
-        { nome: "Açaí (por peso)", descricao: "Escolha seus adicionais grátis — o valor final é calculado na pesagem, na hora da entrega/retirada", preco: 0 }
+        { nome: "Açaí (por peso)", descricao: "Escolha seus adicionais — o valor final é calculado na pesagem, na hora da entrega/retirada", preco: 0 }
       ],
       permiteCoberturas: true
     },
@@ -1901,7 +1901,7 @@
       row.className = 'taxa-row';
       row.innerHTML = `
         <span class="taxa-nome">${c.nome}</span>
-        <span class="taxa-valor">${c.preco > 0 ? formatarPreco(c.preco) : 'Grátis'}</span>
+        <span class="taxa-valor">${c.preco > 0 ? formatarPreco(c.preco) : '⚖️ Pesagem'}</span>
         <div class="taxa-botoes">
           <button type="button" class="cat-admin-btn" title="Editar">✎</button>
           <button type="button" class="cat-admin-btn excluir" title="Remover">🗑</button>
@@ -1931,7 +1931,7 @@
     if(ev.target.id === 'coberturasAdminOverlay') fecharCoberturasAdminOverlay();
   });
   document.getElementById('btnNovaCobertura').addEventListener('click', () => {
-    abrirPrompt2('Nova cobertura (preço 0 = grátis)', '', '', (nome, preco) => {
+    abrirPrompt2('Nova cobertura (preço 0 = pesagem)', '', '', (nome, preco) => {
       coberturas.push({ nome: nome, preco: preco });
       salvarCardapio();
       renderizarListaCoberturasAdmin();
@@ -1989,7 +1989,7 @@
           <div class="cobertura-check">${selecionada ? '✓' : ''}</div>
           <span class="nome">${c.nome}</span>
         </div>
-        <span class="preco">${c.preco > 0 ? '+ ' + formatarPreco(c.preco) : 'Grátis'}</span>
+        <span class="preco">${c.preco > 0 ? '+ ' + formatarPreco(c.preco) : '⚖️ Pesagem'}</span>
       `;
       row.onclick = () => {
         const idx = coberturaSelecaoTemp.indexOf(i);
@@ -2110,7 +2110,7 @@
       const cobs = coberturasEscolhidas[k];
       if(cobs && cobs.length){
         const nomes = cobs.map(ci => coberturas[ci] ? coberturas[ci].nome : '').filter(Boolean).join(', ');
-        if(nomes) linha += `\n   adicionais (grátis): ${nomes}`;
+        if(nomes) linha += `\n   adicionais (pesagem): ${nomes}`;
       }
       if(observacoes[k] && observacoes[k].trim()){
         linha += `\n   obs: ${observacoes[k].trim()}`;
